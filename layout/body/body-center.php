@@ -2,7 +2,7 @@
     <div class="product">
         <div class="product-topic">
             <div class="topic">
-                สินค้าใหม่
+                สินค้าใหม่ มาแรง
             </div>
         </div>
        

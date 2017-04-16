@@ -14,5 +14,5 @@ if(empty($_SESSION['MEMBER_ID']) || !empty($_SESSION['ADMIN_ID'])){
 include "layout/footer/footer-contact.php";
 ?>
 <script>
-    $("#index").css("background-color","rgb(231,231,231)")
+    $("#index").css({"background-color":"rgb(231,231,231)","color":"yellow"})
 </script>
