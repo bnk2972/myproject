@@ -11,7 +11,7 @@
         </div>
         <div class="report-manage-product">
             <div class="advertise-image" style="position:relative; margin-top:10px; height:500px; padding:5px; border:1px solid #ccc; text-align:left;">
-                <img src="<?=(!empty($result[0]['imgPath']) ? 'img/howtopay/'.$result[0]['imgPath']:'../../work/img/advertise/no_img/No_Banner.png')?>" id="show-img-advertise" style="border:1px solid #ccc; width:50%; height:100%;">
+                <img src="<?=(!empty($result[0]['imgPath']) ? 'img/howtopay/'.$result[0]['imgPath']:'/img/advertise/no_img/No_Banner.png')?>" id="show-img-advertise" style="border:1px solid #ccc; width:50%; height:100%;">
                 <div style="width:45%; padding:10px; border:1px solid #ccc; float:right; height:100%;">
                 <h3 style="margin:0px; text-decoration:underline;">รายละเอียด</h3>
                 <?=isset($result[0]['detail']) ? $result[0]['detail']:"ไม่มีรายละเอียด"?>

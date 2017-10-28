@@ -79,13 +79,34 @@
                 }
                 ?>
                 </ul>
-                <ul class="nav navbar-nav contact">
-                    <li><a href="#" style="padding:0px; margin-left: 10px; margin-top:10px;" class="s_icon s_fb_fanpage"></a></li>
-                    <li><a href="#" style="padding:0px; margin-top:10px;" class="s_gplus s_icon"></a></li>
-                    <li><a href="#" style="padding:0px; margin-top:10px;" class="s_instagram s_icon"></a></li>
-                    <li><a href="#" style="padding:0px; margin-top:10px;" class="s_line_talk s_icon"></a></li>
-                </ul>
                 <?php
+                $sql = 'SELECT * FROM phone.contact ORDER BY contact_id ASC';
+                $result = $RES = $db->MySQL($sql);
+                if(sizeof($result)>0){
+                ?>
+                    <ul class="nav navbar-nav contact">
+                        <?php 
+                        if($result[0]['contact_id'] == 1 && isset($result[0]['url'])) {
+                        ?>
+                        <li><a href="<?=$result[0]['url']?>" target="_blank" style="padding:0px; margin-left: 10px; margin-top:10px;" class="s_icon s_fb_fanpage"></a></li>
+                        <?php
+                        }
+                        if($result[1]['contact_id'] == 2 && !empty($result[1]['url'])) {
+                        ?>
+                        <li><a href="<?=$result[1]['url']?>" target="_blank" style="padding:0px; margin-top:10px;" class="s_gplus s_icon"></a></li>
+                        <?php
+                        }
+                        if($result[2]['contact_id'] == 3 && !empty($result[2]['url'])) {
+                        ?>
+                        <li><a href="#" style="padding:0px; margin-top:10px;" class="s_instagram s_icon"></a></li>
+                        <?php
+                        }
+                        ?>
+<!--                        <li><a href="#" style="padding:0px; margin-top:10px;" class="s_line_talk s_icon"></a></li>-->
+                    </ul>
+                <?php
+                }
+                
                 if(!empty($_SESSION['MEMBER_ID'])){
                     ?>
                     <ul class="nav navbar-nav navbar-right main">

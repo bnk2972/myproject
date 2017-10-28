@@ -417,15 +417,14 @@ function updateProduct(){
             }
         }
     });
-    
-    if($("#edit-product #typeid").length == 0){
+    if($("#edit-product #typeid").val() == 0){
         defect++;
         msg_defect = "กรุณาเลือกประเภทสินค้า";
-        $("#edit-product #all-tag-type").css("border","1px solid rgb(255,47,52)");
+        $("#edit-product #typeid").css("border","1px solid rgb(255,47,52)");
         $("#edit-product .typeid-msg").html(msg_defect)
         $("#edit-product .typeid-prefect").show()   
     }else{
-        $("#edit-product #all-tag-type").css("border","1px solid #ccc")
+        $("#edit-product #typeid").css("border","1px solid #ccc")
         $("#edit-product .typeid-prefect").hide()
     }
     

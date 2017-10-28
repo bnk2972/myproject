@@ -437,7 +437,7 @@
                                     <td class="modal-td">ยี่ห้อสินค้า&nbsp;:&nbsp;</td>
                                     <td style="text-align:left;">
                                         <select id="brandid" name="brandid" class="form-control">
-                                            <option value="" selected>--เลือกยี่ห้อ--</option>
+                                            <option value="">--เลือกยี่ห้อ--</option>
                                             <?php
                                                 $sql_brand = "SELECT * FROM product_brand ORDER BY brandNAME ASC";
                                                 $resule_brand = $db->MySQL($sql_brand);
@@ -461,10 +461,10 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="modal-td">แท็กประเภทสินค้า&nbsp;:&nbsp;</td>
+                                    <td class="modal-td">ประเภทสินค้า&nbsp;:&nbsp;</td>
                                     <td style="text-align:left;">
                                         <select name="typeid" id="typeid" class="form-control">
-                                            <option value="" selected>--เลือกประเภท--</option>
+                                            <option value="0">--เลือกประเภท--</option>
                                             <?php
                                                 $sql_type = "SELECT * FROM product_type ORDER BY typeNAME ASC";
                                                 $resule_type = $db->MySQL($sql_type);

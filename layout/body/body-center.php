@@ -74,6 +74,7 @@ $result_type = $db->MySQL($sql);
                             FROM product p 
                             LEFT JOIN product_brand pb ON p.brandID = pb.brandID
                             LEFT JOIN product_type pt ON p.typeID = pt.typeID
+                            WHERE p.amount <> 0
                             ORDER BY p.productID DESC";
         $result_product_new = $db->MySQL($sql_product_new);
         $count = 0;

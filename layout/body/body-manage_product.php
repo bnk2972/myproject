@@ -52,7 +52,7 @@
         let searchname = $("#search-product").val();
         let type = $("#type-search").val();
         $.ajax({
-            url:"ajax/getAllProduct.php",
+            url:"/ajax/getAllProduct.php",
             type:"post",
             data:{
                 all : 1,
@@ -81,7 +81,7 @@
     
     function editProduct(id){
         $.ajax({
-            url:"ajax/getDetailProduct.php",
+            url:"/ajax/getDetailProduct.php",
             data:{
                 productid:id
             },
