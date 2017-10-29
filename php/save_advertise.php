@@ -7,7 +7,7 @@ $sql_advertise = "SELECT * FROM advertise WHERE advertiseID = 1";
 $result_advertise = $db->MySQL($sql_advertise);
 if(sizeof($result_advertise)==0){
     if(!empty($_FILES['advertise_img']['tmp_name'])){
-        if(is_uploaded_file($_FILES['advertise_img']['tmp_name']) || file_exists($_FILES['productpic1']['tmp_name'])){
+        if(is_uploaded_file($_FILES['advertise_img']['tmp_name']) || file_exists($_FILES['advertise_img']['tmp_name'])){
             $filetype = pathinfo($_FILES['advertise_img']['name'],PATHINFO_EXTENSION);
             $filetmp = $_FILES['advertise_img']['tmp_name'];
             $filename = "advertise1.".$filetype;

@@ -2,13 +2,10 @@
     <div class="panel-heading">
         <h3 class="panel-title">สินค้าในตะกร้า</h3>
     </div>
-    <div class="panel-body basket">
-    0 รายการ <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
+    <div class="panel-body basket" onclick="window.location.href='mycart.php'">
+    <span id="count_cart"></span> รายการ <i class="fa fa-shopping-cart fa-lg" aria-hidden="true"></i>
     </div>
-    <div class="panel-heading center1">
-        <h3 class="panel-title">รายการชื่นชอบ</h3>
-    </div>
-    <div class="panel-heading center2">
+    <div class="panel-heading center2" onclick="window.location.href='order.php'">
         <h3 class="panel-title">รายการสั่งซื้อ</h3>
     </div>
     <!--<div class="panel-footer">
@@ -28,6 +25,11 @@
         width: 110px;
         z-index: 100;
     }
+    .panel-primary > .panel-heading {
+        color: #fff;
+        background-color: #e74c3c;
+        border-color: #e74c3c;
+    }
     .panel-heading{
         width: 110px;
         border-top-left-radius: 3px;
@@ -38,7 +40,7 @@
     }
     .panel-body.basket{
         width: 110px;
-        border: 1px solid rgb(51,122,183);
+        border: 1px solid #e74c3c;
         cursor: pointer;
         background-color: white;
         float:right;

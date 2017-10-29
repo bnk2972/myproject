@@ -2,31 +2,60 @@
     <div class="product" style="min-height:100%;">
         <div class="product-topic left">
             <div class="topic">
-                จัดการรายละเอียดสินค้า
-                <select class="form-control" id="selectManagementStore" style="width:15em; display:inline-block; border-radius:0px; vertical-align:top;" onchange="selectManageDetail(this.value)">
-                    <option value="1">--ยี่ห้อสินค้า--</option>
-                    <option value="2">--ประเภทสินค้า--</option>
-                </select>
+                จัดการยี่ห้อสินค้า
+                <div class="input-group manage-product-s"> 
+                    <button class="btn btn-info" data-toggle="modal" data-target="#add-brand" style="margin-right:5px;"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> เพิ่มยี่ห้อ</button>
+                </div>
             </div>
         </div>
         <div class="report-manage-product">
             
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="5%">ลำดับ</th>
+                    <th width="20%">ยี่ห้อ</th>
+                    <th width="20%">บริษัท</th>
+                    <th width="25%">ที่อยู่</th>
+                    <th width="10%">เบอร์โทร</th>
+                    <th width="20%">แก้ไขข้อมูล</th>
+                </tr>
+            </thead>
+            <tbody>
+            <?php
+                $sql_brand = "SELECT * FROM product_brand ORDER BY brandID ASC";
+                $result_brand = $db->MySQL($sql_brand);
+                if(sizeof($result_brand)>0){
+                    $n = 1;
+                    foreach($result_brand as $brand){
+            ?>
+            <tr>
+                <td><?=$n?></td>
+                <td><?=$brand['brandNAME']?></td>
+                <td><?=$brand['brandCompany']?></td>
+                <td><?=$brand['brandAddress']?></td>
+                <td><?=$brand['brandContact']?></td>
+                <td><button onclick="editBrand(<?=$brand['brandID']?>)" class="btn btn-info"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> แก้ไข</button> <button onclick="delBrand(<?=$brand['brandID']?>,'<?=$brand['brandNAME']?>')" class="btn btn-danger"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> ลบ</button></td>
+            </tr>
+      
+            <?php
+                        $n++;
+                    }
+                }else{
+                    ?>
+                    <tr>
+                        <td colspan="6">ไม่มียี่ห้อสินค้า</td>
+                    </tr>
+                    <?php
+                }
+            ?>
+            </tbody>
+        </table>
+
         </div>
     </div>
 </div>
 <script type="text/javascript">
-    selectManageDetail($("#selectManagementStore").val());
-    function selectManageDetail(status){
-        $.ajax({
-            url:"ajax/getManageDetail.php",
-            type:"post",
-            data:{status:status},
-            success:function(result){
-                $(".report-manage-product").html(result);
-            }
-        });
-    }
-    
     function editBrand(id){
         $("#edit-brand-product")[0].reset();
         sessionStorage.removeItem("brand");
@@ -92,7 +121,7 @@
                     },
                     function(){
                         if(obj.status == true){
-                            selectManageDetail(1);
+                            window.location.href = window.location.href;
                         }
                     });
                 }
@@ -127,7 +156,7 @@
                     },
                     function(){
                         if(obj.status == true){
-                            selectManageDetail(2);
+                            window.location.href = window.location.href;
                         }
                     });
                 }

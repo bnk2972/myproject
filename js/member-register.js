@@ -7,7 +7,7 @@ function check_mail(email,send){
     var check
     if(email.match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
         $.ajax({
-            url:"http://"+domainName+"/work/ajax/checkMail.php",
+            url:"/ajax/checkMail.php",
             type:"post",
             data:{
                 email:email
@@ -28,65 +28,6 @@ function check_mail(email,send){
         })
     }
     if(send != "" || send != null) return check;
-}
-
-function get_aumphur(province_id){
-    if(province_id == ""){
-        $("#amphur").html("<option value=''>--กรุณาระบุอำเภอ--</option>")
-        $("#district").html("<option value=''>--กรุณาระบุตำบล--</option>")
-        $("#postcode").val('')
-        return false
-    }
-    $("#province").css("border","1px solid #ccc")
-    $("#get-signup .province-signup").hide()
-    $("#district").html("<option value=''>--กรุณาระบุตำบล--</option>")
-    $("#postcode").val('')
-    $.ajax({
-        url:"http://"+domainName+"/work/ajax/getAddress.php",
-        type:"post",
-        data:{
-            amphur:1,
-            province_id:province_id
-        },
-        success:function(e){
-            $("#amphur").html(e)
-        }
-    })
-}
-
-function get_district(amphur_id,province_id){
-    if(amphur_id == ""){
-        $("#district").html("<option value=''>--กรุณาระบุตำบล--</option>")
-        $("#postcode").val('')
-        return false
-    }
-    $("#amphur").css("border","1px solid #ccc")
-    $("#get-signup .amphur-signup").hide()
-    $("#postcode").val('')
-    $.ajax({
-        url:"http://"+domainName+"/work/ajax/getAddress.php",
-        type:"post",
-        data:{
-            district:1,
-            province_id:province_id,
-            amphur_id:amphur_id
-        },
-        success:function(e){
-            var obj = JSON.parse(e)
-            $("#district").html(obj.data).attr("onchange","get_postcode("+obj.postcode+")")
-        }
-    })
-}
-
-function get_postcode(postcode){
-    if($("#district").val() == ""){
-        $("#postcode").val('')
-        return false
-    }
-    $("#district").css("border","1px solid #ccc")
-    $("#get-signup .district-signup").hide()
-    $("#postcode").val(postcode).css("border-bottom","1px solid #ccc")
-    $("#get-signup .postcode-signup").hide()
 }
 
 function get_signup(){
@@ -167,7 +108,7 @@ function get_signup(){
                 $("#get-signup ."+field.name+"-signup").show()
             }else{
                 $.ajax({
-                    url:"http://"+domainName+"/work/ajax/checkMyCode.php",
+                    url:"/ajax/checkMyCode.php",
                     type:"post",
                     async:false,
                     data:{
@@ -249,7 +190,7 @@ function get_login(){
     var email = $("#get-signin [name=email]").val(),
         pass = $("#get-signin [name=pass]").val()
     $.ajax({
-        url:"http://"+domainName+"/work/php/member_login.php",
+        url:"/php/member_login.php",
         type:"post",
         data:{
             email: email,

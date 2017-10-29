@@ -55,7 +55,9 @@ if(sizeof($result)>0){
             </div>
         </td>
         <td class="modal-td">ชื่อสินค้า&nbsp;:&nbsp;</td>
-        <td><input type="text" id="productname" readonly value="<?=$result[0]['productNAME']?>" name="productname"></td>
+        <td>
+            <input type="hidden" id="productid" name="productid" value="<?=$result[0]['productID']?>">
+            <input type="text" id="productname" readonly value="<?=$result[0]['productNAME']?>" name="productname"></td>
     </tr>
     <tr>
         <td class="modal-td">ยี่ห้อสินค้า&nbsp;:&nbsp;</td>

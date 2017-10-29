@@ -54,7 +54,7 @@ function addProductBrand(){
     });
     if(defect>0) return false;
     $.ajax({
-        url:"../work/ajax/save_add_product.php",
+        url:"/ajax/save_add_product.php",
         type:"post",
         async:false,
         data:$("#get-brand").serialize()+"&addBrand=1",
@@ -72,7 +72,7 @@ function addProductBrand(){
                     $("#get-brand .brand-name-prefect").hide()
                     $('#add-brand').modal('hide');
                     $('#get-brand')[0].reset();
-                    selectManageDetail(1);
+                    window.location.href = window.location.href;
                 }else{
                     $("#get-brand [name=brandname]").css("border-bottom","1px solid rgb(255,47,52)")
                     $("#get-brand .brand-name-msg").html("มีชื่อยี่ห้อนี้ในระบบ")
@@ -140,7 +140,7 @@ function editProductBrand(){
     if(defect>0) return false;
     let brand = JSON.parse(sessionStorage.getItem("brand"));
     $.ajax({
-        url:"../work/ajax/save_add_product.php",
+        url:"/ajax/save_add_product.php",
         type:"post",
         "async":false,
         data:$("#edit-brand-product").serialize()+"&editBrand=1&brandid="+brand[0].value+"&brandoldname="+brand[1].value+"&brandoldcompany="+brand[2].value+"&brandoldaddress="+brand[3].value+"&brandoldcontact="+brand[4].value,
@@ -158,7 +158,7 @@ function editProductBrand(){
                     $("#edit-brand-product .brand-name-prefect").hide()
                     $('#edit-brand').modal('hide');
                     $('#edit-brand-product')[0].reset();
-                    selectManageDetail(1);
+                    window.location.href = window.location.href;
                 }else{
                     $("#edit-brand-product [name=brandname]").css("border-bottom","1px solid rgb(255,47,52)")
                     $("#edit-brand-product .brand-name-msg").html("มีชื่อยี่ห้อนี้ในระบบ")
@@ -189,7 +189,7 @@ function addProductType(){
     });
     if(defect>0) return false;
     $.ajax({
-        url:"../work/ajax/save_add_product.php",
+        url:"/ajax/save_add_product.php",
         type:"post",
         async:false,
         data:$("#add-type").serialize()+"&addType=1",
@@ -207,7 +207,7 @@ function addProductType(){
                     $("#add-type .type-name-defect").hide()
                     $('#add-type-product').modal('hide');
                     $('#add-type')[0].reset();
-                    selectManageDetail(2);
+                    window.location.href = window.location.href;
                 }else{
                     $("#add-type [name=typename]").css("border-bottom","1px solid rgb(255,47,52)")
                     $("#add-type .type-name-msg").html("มีชื่อประเภทนี้ในระบบ")
@@ -239,7 +239,7 @@ function editProductType(){
     if(defect>0) return false;
     let type = JSON.parse(sessionStorage.getItem("type"));
     $.ajax({
-        url:"../work/ajax/save_add_product.php",
+        url:"/ajax/save_add_product.php",
         type:"post",
         async:false,
         data:$("#edit-type").serialize()+"&editType=1&typeid="+type[0].value+"&typeoldname="+type[1].value,
@@ -257,7 +257,7 @@ function editProductType(){
                     $("#edit-type .type-name-defect").hide()
                     $('#edit-type-product').modal('hide');
                     $('#edit-type')[0].reset();
-                    selectManageDetail(2);
+                    window.location.href = window.location.href;
                 }else{
                     $("#edit-type [name=typename]").css("border-bottom","1px solid rgb(255,47,52)")
                     $("#edit-type .type-name-msg").html("มีชื่อประเภทนี้ในระบบ")
@@ -315,10 +315,10 @@ function addProduct(){
         }
     });
     
-    if($("#add-product .typeid:checked").length == 0){
+    if($("#add-product #typeid").val() == ""){
         defect++;
-        msg_defect = "กรุณาเลือกประเภทสินค้าอย่างน้อย 1 ประเภท";
-        $("#add-product #all-tag-type").css("border","1px solid rgb(255,47,52)");
+        msg_defect = "กรุณาเลือกประเภทสินค้า";
+        $("#add-product #typeid").css("border","1px solid rgb(255,47,52)");
         $("#add-product .typeid-msg").html(msg_defect)
         $("#add-product .typeid-prefect").show()   
     }else{
@@ -337,16 +337,10 @@ function addProduct(){
         $("#add-product .productpic1-prefect").hide()
     }
     if(defect>0) return false;
-    let typeid = '';
-    $("#add-product .typeid:checked").each(function(){
-        typeid+=$(this).val()+',';
-    });
-    typeid = typeid.substr(0,typeid.length-1);
     var formData = new FormData($("#add-product")[0]);
     formData.append('addProduct',1);
-    formData.append('typeid',typeid);
     $.ajax({
-        url:"../work/ajax/save_add_product.php",
+        url:"/ajax/save_add_product.php",
         type:"post",
         "async":false,
         data:formData,
@@ -424,9 +418,9 @@ function updateProduct(){
         }
     });
     
-    if($("#edit-product .typeid:checked").length == 0){
+    if($("#edit-product #typeid").length == 0){
         defect++;
-        msg_defect = "กรุณาเลือกประเภทสินค้าอย่างน้อย 1 ประเภท";
+        msg_defect = "กรุณาเลือกประเภทสินค้า";
         $("#edit-product #all-tag-type").css("border","1px solid rgb(255,47,52)");
         $("#edit-product .typeid-msg").html(msg_defect)
         $("#edit-product .typeid-prefect").show()   
@@ -448,16 +442,10 @@ function updateProduct(){
         }
     }
     if(defect>0) return false;
-    let typeid = '';
-    $("#edit-product .typeid:checked").each(function(){
-        typeid+=$(this).val()+',';
-    });
-    typeid = typeid.substr(0,typeid.length-1);
     var formData = new FormData($("#edit-product")[0]);
     formData.append('editProduct',1);
-    formData.append('typeid',typeid);
     $.ajax({
-        url:"../work/ajax/save_add_product.php",
+        url:"/ajax/save_add_product.php",
         type:"post",
         "async":false,
         data:formData,

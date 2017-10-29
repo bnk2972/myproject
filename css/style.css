@@ -5,6 +5,84 @@
 .dropdown-menu > li > a{
     color: rgb(134,134,134);
 }*/
+.input-group select{
+    border-radius: 0px;
+}
+.s_icon{
+    background-image: url(../img/background/top_header_2x.png);
+    background-size: 930px 370px;
+    background-repeat: no-repeat;
+}
+.s_icon{
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    opacity: 1;
+}
+.s_instagram{
+    background-position: -346px -39px;
+}
+.s_gplus{
+    background-position: -273px -39px;
+}
+.s_line_talk {
+    background-position: -273px -73px;
+}
+.s_fb_fanpage{
+    background-position: -309px -5px;
+}
+.navbar.navbar-default{
+    border:none;
+}
+.navbar-default.main {
+    background-color: #EAE8E8;
+}
+.navbar.navbar-default.main .nav.navbar-nav.navbar-left{
+    background-color: #e74c3c;
+}
+.navbar-default .navbar-brand {
+    color: white;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+    color: #ffbbbc;
+}
+
+.navbar-collapse{
+    padding-left: 0px;
+}
+
+.nav.navbar-nav.navbar-right.main{
+    background-color: black;
+    color: white;
+}
+
+.nav.navbar-nav.navbar-right.main:focus{
+    background-color: black;
+    color: white;
+}
+
+.nav.navbar-nav.navbar-left .open > a, .nav .open > a:hover, .nav .open > a:focus{
+    background-color: #DE4738;
+    color: white;
+}
+
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav.navbar-right.main > .open > a:hover, .navbar-default .navbar-nav.navbar-right.main > .open > a:focus{
+    background-color: black;
+    color: white;
+}
+
+.navbar-default.main .navbar-nav > li > a {
+    color: white;
+}
+
+
+.container{
+    background-color: white;
+}
+.container.index{
+    padding-top: 1%;
+}
 .navbar.navbar-inverse {
     border-radius: 0px;
     margin-bottom: 0px !important;
@@ -14,13 +92,29 @@
     margin-bottom: 0px !important;
     border-color: transparent;
 }
+
+#signup .close, #add-product-modal .close{
+    color: white !important;
+}
+
+.btn.btn-orange{
+    color: #fff;
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+}
+
+.btn.btn-orange:hover{
+    color: white;
+    background-color: #c0392b;
+}
+
 .jumbotron{
     
     background-size: 100% 100%;
     border-radius: 0px !important;
     margin-bottom: 0px !important;
     text-align: right;
-    height: 270px;
+    height: 200px;
     
 }
 #advertise{
@@ -53,13 +147,18 @@
     opacity: 1;
     visibility: visible !important;
 }
-html,body{
+/* html,body{
     background-image: url("../img/background/paper.jpg");
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center top;
     background-attachment: fixed;
     font-family: 'Kanit', sans-serif;
+} */
+html, body{
+    background-color: #CBC8C8;
+    /* font-family: 'Kanit', sans-serif; */
+    font-family: 'Maitree', serif;    
 }
 body::-webkit-scrollbar{
     display: none;
@@ -95,7 +194,7 @@ li > .input-group{
 .thumbnail{
     border-radius: 0px;
     padding: 0px;
-    border: none;
+    border: 1px solid #ddd;
     background-color: transparent;
 }
 .new-product .btn , .hot-product .btn {
@@ -131,8 +230,8 @@ li > .input-group{
     border-bottom: 1px solid rgb(134,134,134);
 }
 .thumbnail>.caption{
-    border-bottom: 1px dashed black;
     color: black;
+    background-color: #EEEAEA;
 }
 
 /* modal-signin */
@@ -141,7 +240,7 @@ li > .input-group{
 }
 .modal-td{
     text-align: right;
-    width: 110px;
+    width: 120px;
 }
 .modal-img{
     width:50%;
@@ -200,7 +299,7 @@ li > .input-group{
 }
 /*modal-signup*/
 #signup > .modal-dialog{
-    width:450px !important;
+    width:800px !important;
 }
 #forget > .modal-dialog{
     width:350px !important;
@@ -210,6 +309,9 @@ li > .input-group{
 }
 #edit-brand > .modal-dialog{
     width:400px !important;   
+}
+#add-product-modal > .modal-dialog, #edit-product-modal > .modal-dialog{
+    width:1200px !important; 
 }
 #add-type-product > .modal-dialog, #edit-type-product > .modal-dialog{
     width:500px !important;
@@ -257,10 +359,11 @@ textarea{
     width: 200px;
     margin-top: 8px;
     margin-right: 8px;
+    border-radius: 0px;
 }
 
 /*manage product*/
-.report-manage-product{
+.report-manage-product,report-cart-product{
     padding: 10px;
 }
 .advertise-manage{

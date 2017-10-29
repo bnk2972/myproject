@@ -2,7 +2,7 @@
 if(empty($_SESSION['MEMBER_ID'])){
     $event_click = "pleaseLogin()"; 
 }else{
-    $event_click = ""; 
+    $event_click = "getToCart($('#detail-cart-product #productid').val(),$('#detail-cart-product #price').val())"; 
 }
 ?>
 <div id="detail-cart-product" class="modal fade modal-small" role="dialog">

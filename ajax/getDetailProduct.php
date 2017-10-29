@@ -24,7 +24,7 @@ if(sizeof($result)>0){
         }
         $imgvalue = rtrim($imgvalue,",");
     }
-    $datajson = '[{"id":"productid","value":"'.$result[0]['productID'].'"},{"id":"productname","value":"'.$result[0]['productNAME'].'"},{"id":"brandid","value":"'.$result[0]['brandID'].'"},{"id":"all-tag-type","value":"'.$result[0]['typeID'].'"},{"id":"amount","value":"'.$result[0]['amount'].'"},{"id":"price","value":"'.$result[0]['price'].'"},{"id":"detail","value":"'.$result[0]['detail'].'"},{"id":"image","value":['.$imgvalue.']}]';
+    $datajson = '[{"id":"productid","value":"'.$result[0]['productID'].'"},{"id":"productname","value":"'.$result[0]['productNAME'].'"},{"id":"brandid","value":"'.$result[0]['brandID'].'"},{"id":"typeid","value":"'.$result[0]['typeID'].'"},{"id":"amount","value":"'.$result[0]['amount'].'"},{"id":"price","value":"'.$result[0]['price'].'"},{"id":"detail","value":"'.$result[0]['detail'].'"},{"id":"image","value":['.$imgvalue.']}]';
     echo parse($datajson);
 }
 exit;

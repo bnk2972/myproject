@@ -3,7 +3,7 @@
         <div class="product-topic left">
             <div class="topic">
                 จัดการสินค้า
-                <div class="input-group manage-product">
+                <!-- <div class="input-group manage-product">
                     <input type="text" id="search-product" class="form-control search-product text-box" placeholder="เลือกประเภทการค้นหา" disabled name="search-product">
                     <span class="input-group-btn">
                         <button class="btn btn-default search-product" type="button" disabled><span class="glyphicon glyphicon-search" aria-hidden="true"></span> ค้นหา</button>
@@ -16,9 +16,8 @@
                         <option value="2">ค้นหาจากรหัสสินค้า</option>
                         <option value="3">ค้นหาจากยี่ห้อ</option>
                     </select>
-                </div>
+                </div> -->
                 <div class="input-group manage-product-s"> 
-                    <button class="btn btn-warning" onclick="window.open('store.php');" style="margin-right:5px;"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> หน้าแสดงสินค้า</button>
                     <button data-toggle="modal" data-target="#add-product-modal"  class="btn btn-info"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> เพิ่มสินค้า</button>
                 </div>
                 
@@ -89,36 +88,10 @@
             type:"post",
             success:function(obj){
                 let typename="";
-                obj = JSON.parse(obj);
+                obj = JSON.parse(obj.replace(/\t/g, '\\t'));
                 sessionStorage.setItem("product",obj);
                 $.each(obj,function(i,data){
-                    if(data.id == "all-tag-type"){
-                        $("#edit-product #all-tag-type").css("border","1px solid #ccc")
-                        $("#edit-product .typeid-prefect").hide()
-                        $("#edit-product .typeid").prop("checked",false);
-                        typename = data.value.split(",");
-                        $.each(typename,function(i,typedata){
-                            $("#edit-product .typeid").filter(function(){
-                                return this.value==typedata;
-                            }).prop("checked",true); 
-                        });
-                        
-                        let counttag = 0;
-                        let tag = "";
-                        $("#edit-product .typeid:checked").each(function(){
-                            tag += "<span style='color:blue; text-decoration: underline;'>"+$(this).data("name")+"</span>";
-                            tag += "<span class='glyphicon glyphicon-remove' onclick='delTagsEdit("+$(this).data("eq")+")' style='color:#ccc; font-size:10px; cursor:pointer;'></span> , ";
-                            counttag++;
-                        });
-                        if(counttag>0){
-                            tag = tag.substr(0,tag.length-2);
-                            $("#edit-product #tags").html(tag);
-                            $("#edit-product #type-tag").show();
-                        }else{
-                            $("#edit-product #tags").html("");
-                            $("#edit-product #type-tag").hide();
-                        }
-                    }else if(data.id == "image"){
+                    if(data.id == "image"){
                         $("#edit-product [name=productpic1]").css("border","1px solid #ccc")
                         $("#edit-product .productpic1-prefect").hide()
                         $("#edit-product [name^=productpic]").attr("disabled",false).show();
@@ -161,7 +134,7 @@
         },
         function(){
             $.ajax({
-                url:"../work/ajax/del_product.php",
+                url:"/ajax/del_product.php",
                 data:{productID:id, delProduct:1},
                 type:"post",
                 'async':false,

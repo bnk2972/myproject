@@ -2,6 +2,20 @@
 include "../db/connection_db.php";
 $db = new ConnectDatabase();
 
+function createRandomPassword() { 
+    $chars = "abcdefghijkmnopqrstuvwxyz023456789"; 
+    srand((double)microtime()*1000000); 
+    $i = 0; 
+    $pass = '' ; 
+    while ($i <= 7) { 
+        $num = rand() % 33; 
+        $tmp = substr($chars, $num, 1); 
+        $pass = $pass . $tmp; 
+        $i++; 
+    } 
+    return strtoupper($pass); 
+} 
+
 if(!empty($_POST["addBrand"])){
     $find_brand_name = "SELECT pb.brandNAME FROM product_brand pb WHERE pb.brandNAME = '{$_POST['brandname']}'";
     $res_brand_name = $db->MySQL($find_brand_name);
@@ -107,8 +121,8 @@ if(!empty($_POST['addProduct'])){
     $sql_product_name = "SELECT productNAME FROM product WHERE productNAME = '{$productname}'";
     $result_product_name = $db->MySQL($sql_product_name);
     if(sizeof($result_product_name)==0){
-        $sql_insert_product = "INSERT INTO      product(brandID,typeID,productNAME,detail,amount,price,buy_amount,statusID,create_date_product,create_date_new_product) 
-        VALUES(".$brandid.",'".$typeid."','".$productname."','".$detail."','".$amount."','".$price."',0,1,'".date('Y-m-d H:i:s')."','".date('Y-m-d',strtotime('+1 month',strtotime('today UTC')))."')";
+        $sql_insert_product = "INSERT INTO product(product_code,brandID,typeID,productNAME,detail,amount,price,buy_amount,statusID,create_date_product,create_date_new_product) 
+        VALUES('".createRandomPassword()."',".$brandid.",'".$typeid."','".$productname."','".$detail."','".$amount."','".$price."',0,1,'".date('Y-m-d H:i:s')."','".date('Y-m-d',strtotime('+1 month',strtotime('today UTC')))."')";
         if($productid = $db->ExecuteSQL($sql_insert_product)){
             $uploadCount = 0;
             $sql_check_img = "SELECT MAX(P.imageID) AS maxID FROM (SELECT * FROM product_image) P";

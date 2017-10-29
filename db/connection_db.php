@@ -2,10 +2,10 @@
 define("HOST","127.0.0.1");
 define("USERNAME","root");
 define("PASSWORD","");
-define("DATABASE","store");
+define("DATABASE","phone");
 class ConnectDatabase 
 {   
-    public static $conn;
+    public $conn;
     public function __construct(){
         $this->conn = mysqli_connect(HOST,USERNAME,PASSWORD,DATABASE) or die("Connection Database Fail!!");
         mysqli_set_charset($this->conn,"utf8");

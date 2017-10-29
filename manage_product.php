@@ -1,9 +1,9 @@
 <?php
 header("content-type:text/html; charset=utf-8");
 session_start();
-include "db/connection_db.php";
+include "./db/connection_db.php";
 $db = new ConnectDatabase();
-include "layout/header/header.php";
+include "./layout/header/header.php";
 if(empty($_SESSION["ADMIN_ID"])){
     ?>
     <script type="text/javascript">
@@ -22,12 +22,12 @@ if(empty($_SESSION["ADMIN_ID"])){
     <?php
     exit;
 }
-include "layout/header/header-menu.php";
-include "layout/body/body-manage_product.php";
-include "layout/body/body-add_product.php";
-include "layout/footer/footer-contact.php";
+include "./layout/header/header-menu.php";
+include "./layout/body/body-manage_product.php";
+include "./layout/body/body-add_product.php";
+include "./layout/footer/footer-contact.php";
 ?>
 <script>
-    $(".manage-product").css("background-color","rgb(231,231,231)")
+    $(".manage-product").css("background-color","#c0392b")
 </script>
 

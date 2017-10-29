@@ -27,5 +27,5 @@ include "layout/body/body-manage_advertise.php";
 include "layout/footer/footer-contact.php";
 ?>
 <script>
-    $(".manage-product").css("background-color","rgb(231,231,231)")
+    $(".manage-product").css("background-color","#c0392b")
 </script>
