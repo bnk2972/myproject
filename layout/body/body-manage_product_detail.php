@@ -60,7 +60,7 @@
         $("#edit-brand-product")[0].reset();
         sessionStorage.removeItem("brand");
         $.ajax({
-            url:"ajax/getDetailBrand.php",
+            url:"/ajax/getDetailBrand.php",
             data:{
                 id:id
             },
@@ -79,7 +79,7 @@
         $("#edit-type")[0].reset();
         sessionStorage.removeItem("type");
         $.ajax({
-            url:"ajax/getDetailType.php",
+            url:"/ajax/getDetailType.php",
             data:{
                 id:id
             },
@@ -107,7 +107,7 @@
         },
         function(){
             $.ajax({
-                url:"../work/ajax/del_product.php",
+                url:"/ajax/del_product.php",
                 data:{brandID:id, delBrand:1},
                 type:"post",
                 'async':false,
@@ -142,7 +142,7 @@
         },
         function(){
             $.ajax({
-                url:"../work/ajax/del_product.php",
+                url:"/ajax/del_product.php",
                 data:{typeID:id, delType:1},
                 type:"post",
                 'async':false,

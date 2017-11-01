@@ -16,8 +16,8 @@
                 if($result[0]['statusID']==3 || $result[0]['statusID']==4){
                 ?>
                  <div style="float:right;">
-                    <button class="btn btn-primary">ใบเสร็จ <span class="glyphicon glyphicon-file	Try it
-"></span></button>
+                    <a href="_invoice.php?orderid=<?=$_GET['orderid']?>">ใบเสร็จ <span class="glyphicon glyphicon-file	Try it
+"></span></a>
                 </div>
                 <?php
                 }
